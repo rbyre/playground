@@ -59,7 +59,7 @@ class Home extends StatelessWidget {
                               Icons.contact_mail,
                               color: Colors.white,
                             ),
-                            label: Text('Kontakt')),
+                            label: Text('Kontakt   ')),
                       ),
                     ),
                     Card(
@@ -79,7 +79,7 @@ class Home extends StatelessWidget {
                               color: Colors.white,
                             ),
                             label: Text(
-                              'Terning',
+                              'Terninger',
                               style: TextStyle(color: Colors.white),
                             )),
                       ),

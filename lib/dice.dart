@@ -34,7 +34,7 @@ class _DiceState extends State<Dice> {
       home: Scaffold(
         backgroundColor: Colors.red,
         appBar: AppBar(
-          title: Text('Dicee'),
+          title: Text('Terninger'),
           backgroundColor: Colors.red,
         ),
         body: Column(
