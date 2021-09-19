@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:playground/Contact.dart';
+import 'package:playground/dice.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -8,7 +9,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.teal,
         // appBar: AppBar(
         //   backgroundColor: Colors.pinkAccent,
         //   title: Text('Hjem'),
@@ -21,7 +22,7 @@ class Home extends StatelessWidget {
             ),
             Text(
               'Flutter Test App',
-              style: TextStyle(fontFamily: 'Pacifico', fontSize: 48, color: Colors.pinkAccent),
+              style: TextStyle(fontFamily: 'Pacifico', fontSize: 48, color: Colors.white),
             ),
             SizedBox(
               height: 8,
@@ -30,7 +31,7 @@ class Home extends StatelessWidget {
               'Velg fra listen',
               style: TextStyle(
                   fontFamily: 'SourceSansPro',
-                  color: Colors.pinkAccent,
+                  color: Colors.teal[300],
                   fontSize: 20,
                   letterSpacing: 2.5),
             ),
@@ -45,10 +46,10 @@ class Home extends StatelessWidget {
                     Card(
                       color: Colors.white,
                       child: ListTile(
-                        tileColor: Colors.pinkAccent,
+                        tileColor: Colors.teal,
                         leading: ElevatedButton.icon(
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.pink,
+                              primary: Colors.teal[300],
                             ),
                             onPressed: () {
                               Navigator.push(
@@ -64,77 +65,23 @@ class Home extends StatelessWidget {
                     Card(
                       color: Colors.white,
                       child: ListTile(
-                        tileColor: Colors.pinkAccent,
+                        tileColor: Colors.teal,
                         leading: ElevatedButton.icon(
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.pink,
+                              primary: Colors.teal[300],
                             ),
                             onPressed: () {
                               Navigator.push(
-                                  context, MaterialPageRoute(builder: (context) => Contact()));
+                                  context, MaterialPageRoute(builder: (context) => Dice()));
                             },
                             icon: Icon(
-                              Icons.contact_mail,
+                              Icons.casino,
                               color: Colors.white,
                             ),
-                            label: Text('Kontakt')),
-                      ),
-                    ),
-                    Card(
-                      color: Colors.white,
-                      child: ListTile(
-                        tileColor: Colors.pinkAccent,
-                        leading: ElevatedButton.icon(
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.pink,
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                  context, MaterialPageRoute(builder: (context) => Contact()));
-                            },
-                            icon: Icon(
-                              Icons.contact_mail,
-                              color: Colors.white,
-                            ),
-                            label: Text('Kontakt')),
-                      ),
-                    ),
-                    Card(
-                      color: Colors.white,
-                      child: ListTile(
-                        tileColor: Colors.pinkAccent,
-                        leading: ElevatedButton.icon(
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.pink,
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                  context, MaterialPageRoute(builder: (context) => Contact()));
-                            },
-                            icon: Icon(
-                              Icons.contact_mail,
-                              color: Colors.white,
-                            ),
-                            label: Text('Kontakt')),
-                      ),
-                    ),
-                    Card(
-                      color: Colors.white,
-                      child: ListTile(
-                        tileColor: Colors.pinkAccent,
-                        leading: ElevatedButton.icon(
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.pink,
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                  context, MaterialPageRoute(builder: (context) => Contact()));
-                            },
-                            icon: Icon(
-                              Icons.contact_mail,
-                              color: Colors.white,
-                            ),
-                            label: Text('Kontakt')),
+                            label: Text(
+                              'Terning',
+                              style: TextStyle(color: Colors.white),
+                            )),
                       ),
                     ),
                   ],

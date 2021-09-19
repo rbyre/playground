@@ -7,7 +7,7 @@ class Contact extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.teal,
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -24,7 +24,7 @@ class Contact extends StatelessWidget {
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Pacifico',
-                    color: Colors.pinkAccent),
+                    color: Colors.white),
               ),
               Text(
                 'FLUTTER DEVELOPER',
@@ -33,14 +33,14 @@ class Contact extends StatelessWidget {
                   letterSpacing: 2.5,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'SourceSansPro',
-                  color: Colors.pinkAccent,
+                  color: Colors.teal[300],
                 ),
               ),
               SizedBox(
                 height: 20,
                 width: 150,
                 child: Divider(
-                  color: Colors.pinkAccent,
+                  color: Colors.white,
                 ),
               ),
               Card(
@@ -51,12 +51,12 @@ class Contact extends StatelessWidget {
                     const ListTile(
                       leading: Icon(
                         Icons.email,
-                        color: Colors.pinkAccent,
+                        color: Colors.teal,
                       ),
                       title: Text(
                         'Email: runar.byre@gmail.com',
                         style: TextStyle(
-                            fontFamily: 'SourceSansPro', color: Colors.pinkAccent, fontSize: 20),
+                            fontFamily: 'SourceSansPro', color: Colors.teal, fontSize: 20),
                       ),
                     ),
                   ],
@@ -70,12 +70,12 @@ class Contact extends StatelessWidget {
                     const ListTile(
                       leading: Icon(
                         Icons.phone,
-                        color: Colors.pinkAccent,
+                        color: Colors.teal,
                       ),
                       title: Text(
                         'Phone: 48233485',
                         style: TextStyle(
-                            fontFamily: 'SourceSansPro', color: Colors.pinkAccent, fontSize: 20),
+                            fontFamily: 'SourceSansPro', color: Colors.teal, fontSize: 20),
                       ),
                     ),
                     Row(
@@ -90,7 +90,7 @@ class Contact extends StatelessWidget {
                               style: TextStyle(
                                   fontFamily: 'SourceSansPro',
                                   fontSize: 20,
-                                  color: Colors.pinkAccent,
+                                  color: Colors.teal,
                                   fontWeight: FontWeight.bold),
                             ))
                       ],
