@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:playground/Contact.dart';
 import 'package:playground/dice.dart';
+import 'package:playground/xylophone.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -60,6 +61,28 @@ class Home extends StatelessWidget {
                               color: Colors.white,
                             ),
                             label: Text('Kontakt   ')),
+                      ),
+                    ),
+                    Card(
+                      color: Colors.white,
+                      child: ListTile(
+                        tileColor: Colors.teal,
+                        leading: ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.teal[300],
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context, MaterialPageRoute(builder: (context) => Xylophone()));
+                            },
+                            icon: Icon(
+                              Icons.music_note,
+                              color: Colors.white,
+                            ),
+                            label: Text(
+                              'Xylofon   ',
+                              style: TextStyle(color: Colors.white),
+                            )),
                       ),
                     ),
                     Card(
