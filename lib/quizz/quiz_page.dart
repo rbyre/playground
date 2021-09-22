@@ -8,23 +8,12 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Widget> scoreKeeper = [
-    Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
-    Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    )
+  List<Icon> scoreKeeper = [];
+  int questionNumber = 0;
+  List<String> questions = [
+    'Norges høyeste fjell heter Kattnakken.',
+    'Ca. en fjerdedel av menneskets bein ligger i føttene.',
+    'En snigles blod er grønt.'
   ];
 
   @override
@@ -36,12 +25,15 @@ class _QuizPageState extends State<QuizPage> {
         Expanded(
           flex: 5,
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(10.0),
             child: Center(
-                child: Text(
-              'Her kommer spørsmålet.',
-              style: TextStyle(fontSize: 25.0, color: Colors.white),
-            )),
+              child: Text(
+                questionNumber < questions.length
+                    ? questions[questionNumber]
+                    : 'Ingen flere spørsmål!',
+                style: TextStyle(fontSize: 25.0, color: Colors.white),
+              ),
+            ),
           ),
         ),
         Expanded(
@@ -49,8 +41,16 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15.0),
             child: TextButton(
                 style: TextButton.styleFrom(backgroundColor: Colors.green),
-                onPressed: () {},
-                child: Text(
+                onPressed: () {
+                  setState(() {
+                    scoreKeeper.add(Icon(
+                      Icons.check,
+                      color: Colors.green,
+                    ));
+                    questionNumber++;
+                  });
+                },
+                child: const Text(
                   'Sant',
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 )),
@@ -61,8 +61,18 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15.0),
             child: TextButton(
                 style: TextButton.styleFrom(backgroundColor: Colors.red),
-                onPressed: () {},
-                child: Text(
+                onPressed: () {
+                  setState(() {
+                    scoreKeeper.add(
+                      const Icon(
+                        Icons.close,
+                        color: Colors.red,
+                      ),
+                    );
+                    questionNumber++;
+                  });
+                },
+                child: const Text(
                   'Usant',
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 )),
