@@ -10,7 +10,6 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
-  int questionNumber = 0;
 
   List<bool> answers = [false, true, false, true];
   QuizBrain quizBrain = new QuizBrain();
@@ -26,15 +25,15 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questionNumber < quizBrain.getQuizLength()
-                    ? quizBrain.getQuestionText(questionNumber).toString()
+                quizBrain.getCurrentQuestionNumber() < quizBrain.getQuizLength()
+                    ? quizBrain.getQuestionText().toString()
                     : 'Ingen flere spørsmål!',
                 style: TextStyle(fontSize: 25.0, color: Colors.white),
               ),
             ),
           ),
         ),
-        questionNumber < quizBrain.getQuizLength()
+        quizBrain.getCurrentQuestionNumber() < quizBrain.getQuizLength()
             ? Row(
                 children: [
                   Expanded(
@@ -43,7 +42,7 @@ class _QuizPageState extends State<QuizPage> {
                       child: TextButton(
                           style: TextButton.styleFrom(backgroundColor: Colors.green),
                           onPressed: () {
-                            bool correctAnswer = quizBrain.getQuestionAnswer(questionNumber);
+                            bool correctAnswer = quizBrain.getQuestionAnswer();
                             setState(() {
                               correctAnswer == true
                                   ? scoreKeeper.add(Icon(
@@ -54,7 +53,7 @@ class _QuizPageState extends State<QuizPage> {
                                       Icons.close,
                                       color: Colors.red,
                                     ));
-                              questionNumber++;
+                              quizBrain.nextQuestion();
                             });
                           },
                           child: const Text(
@@ -69,7 +68,7 @@ class _QuizPageState extends State<QuizPage> {
                       child: TextButton(
                           style: TextButton.styleFrom(backgroundColor: Colors.red),
                           onPressed: () {
-                            bool correctAnswer = quizBrain.getQuestionAnswer(questionNumber);
+                            bool correctAnswer = quizBrain.getQuestionAnswer();
                             setState(() {
                               correctAnswer == false
                                   ? scoreKeeper.add(Icon(
@@ -80,7 +79,7 @@ class _QuizPageState extends State<QuizPage> {
                                       Icons.close,
                                       color: Colors.red,
                                     ));
-                              questionNumber++;
+                              quizBrain.nextQuestion();
                             });
                           },
                           child: const Text(
@@ -98,7 +97,7 @@ class _QuizPageState extends State<QuizPage> {
                     style: TextButton.styleFrom(backgroundColor: Colors.orange),
                     onPressed: () {
                       setState(() {
-                        questionNumber = 0;
+                        quizBrain.resetQuiz();
                         scoreKeeper = [];
                       });
                     },
