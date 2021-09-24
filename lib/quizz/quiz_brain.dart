@@ -12,7 +12,7 @@ class QuizBrain {
         questionText: 'En mannlig hornbille kan løfte 850 ganger sin egen kroppsvekt.',
         questionAnswer: true),
     Question(
-        questionText: 'Den totale overflaten av to menneske lunger er ca. 70 kvadratmeter.',
+        questionText: 'Den totale overflaten av to menneskelunger er ca. 70 kvadratmeter.',
         questionAnswer: true),
     Question(
         questionText:

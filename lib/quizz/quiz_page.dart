@@ -10,9 +10,25 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
-
-  List<bool> answers = [false, true, false, true];
   QuizBrain quizBrain = new QuizBrain();
+
+  void checkAnswer(bool userPickedAnswer) {
+    bool correctAnswer = quizBrain.getQuestionAnswer();
+
+    setState(() {
+      correctAnswer == true
+          ? scoreKeeper.add(Icon(
+              Icons.check,
+              color: Colors.green,
+            ))
+          : scoreKeeper.add(Icon(
+              Icons.close,
+              color: Colors.red,
+            ));
+      quizBrain.nextQuestion();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,26 +56,17 @@ class _QuizPageState extends State<QuizPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: TextButton(
-                          style: TextButton.styleFrom(backgroundColor: Colors.green),
-                          onPressed: () {
-                            bool correctAnswer = quizBrain.getQuestionAnswer();
-                            setState(() {
-                              correctAnswer == true
-                                  ? scoreKeeper.add(Icon(
-                                      Icons.check,
-                                      color: Colors.green,
-                                    ))
-                                  : scoreKeeper.add(Icon(
-                                      Icons.close,
-                                      color: Colors.red,
-                                    ));
-                              quizBrain.nextQuestion();
-                            });
-                          },
-                          child: const Text(
-                            'Sant',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          )),
+                        style: TextButton.styleFrom(backgroundColor: Colors.green),
+                        onPressed: () {
+                          setState(() {
+                            checkAnswer(true);
+                          });
+                        },
+                        child: const Text(
+                          'Sant',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                      ),
                     ),
                   ),
                   Expanded(
@@ -68,19 +75,7 @@ class _QuizPageState extends State<QuizPage> {
                       child: TextButton(
                           style: TextButton.styleFrom(backgroundColor: Colors.red),
                           onPressed: () {
-                            bool correctAnswer = quizBrain.getQuestionAnswer();
-                            setState(() {
-                              correctAnswer == false
-                                  ? scoreKeeper.add(Icon(
-                                      Icons.check,
-                                      color: Colors.green,
-                                    ))
-                                  : scoreKeeper.add(Icon(
-                                      Icons.close,
-                                      color: Colors.red,
-                                    ));
-                              quizBrain.nextQuestion();
-                            });
+                            checkAnswer(false);
                           },
                           child: const Text(
                             'Usant',
@@ -94,7 +89,7 @@ class _QuizPageState extends State<QuizPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: TextButton(
-                    style: TextButton.styleFrom(backgroundColor: Colors.orange),
+                    style: TextButton.styleFrom(backgroundColor: Colors.lightBlueAccent),
                     onPressed: () {
                       setState(() {
                         quizBrain.resetQuiz();
