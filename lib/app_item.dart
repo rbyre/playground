@@ -3,11 +3,13 @@ import 'package:shimmer/shimmer.dart';
 
 class AppItem extends StatelessWidget {
   final String title;
+  final String description;
   final Color color;
   final String route;
 
   AppItem(
     this.title,
+    this.description,
     this.color,
     this.route,
   );
@@ -27,11 +29,19 @@ class AppItem extends StatelessWidget {
         child: Shimmer.fromColors(
           baseColor: Colors.black,
           highlightColor: Colors.yellow,
-          period: Duration(milliseconds: 3000),
+          period: Duration(milliseconds: 2000),
           // loop: 4,
-          child: Text(
-            title,
-            style: Theme.of(context).textTheme.caption,
+          child: Column(
+            children: [
+              Text(
+                title,
+                style: Theme.of(context).textTheme.caption,
+              ),
+              Text(
+                description,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+            ],
           ),
         ),
         decoration: BoxDecoration(

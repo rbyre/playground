@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:playground/quizz/quiz_brain.dart';
+import 'package:playground/quiz/quiz_brain.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({Key? key}) : super(key: key);

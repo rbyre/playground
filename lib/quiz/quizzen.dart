@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:playground/quizz/quiz_page.dart';
+import 'package:playground/quiz/quiz_page.dart';
 
 class Quizzen extends StatelessWidget {
   const Quizzen({Key? key}) : super(key: key);

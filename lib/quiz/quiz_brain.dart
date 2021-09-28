@@ -1,4 +1,4 @@
-import 'package:playground/quizz/question.dart';
+import 'package:playground/quiz/question.dart';
 
 class QuizBrain {
   int _questionNumber = 0;

@@ -3,33 +3,40 @@ import './models/kort.dart';
 
 const List myApps = [
   Kort(
-    id: 'a1',
+    id: '1',
     title: 'Kontakt',
     route: 'kontakt',
-    // description: 'Et kontaktkort',
+    description: 'Et kontaktkort',
     color: Colors.teal,
   ),
   Kort(
-    id: 'a2',
+    id: '2',
     title: 'Xylofon',
     route: 'xylofon',
-    // description: 'Spill en sang',
+    description: 'Spill en sang',
     color: Colors.pink,
   ),
   Kort(
-    id: 'a3',
+    id: '3',
     title: 'Terninger',
     route: 'terninger',
-    // description: 'Klikk på terningene for å rulle',
+    description: 'Klikk på terningene for å rulle',
     color: Colors.orange,
   ),
   Kort(
-    id: 'a4',
+    id: '4',
     title: 'Quiz',
     route: 'quiz',
-    // description: 'Se om du får alt rett',
+    description: 'Se om du får alt rett',
     color: Colors.lightBlue,
   ),
+  Kort(
+    id: '5',
+    title: 'BMI',
+    route: 'bmi',
+    description: 'På tide med en joggetur?',
+    color: Colors.deepPurple,
+  )
 ];
 
 // SizedBox(

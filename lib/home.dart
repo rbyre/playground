@@ -18,6 +18,7 @@ class Home extends StatelessWidget {
             .map(
               (appData) => AppItem(
                 appData.title,
+                appData.description,
                 appData.color,
                 appData.route,
               ),
