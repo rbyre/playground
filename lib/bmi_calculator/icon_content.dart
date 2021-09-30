@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-const customCardInactiveText = Color(0XFF8D8E98);
-const labelTextStyle = TextStyle(fontSize: 18, color: customCardInactiveText);
+import './constants.dart';
 
 class IconContent extends StatelessWidget {
   final String label;

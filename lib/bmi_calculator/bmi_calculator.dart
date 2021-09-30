@@ -3,12 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:playground/bmi_calculator/icon_content.dart';
 import 'package:playground/bmi_calculator/reusable_card.dart';
 
-const bottomContainerHeight = 80.0;
-const activeCardColor = Color(0xFF1D1E33);
-const inactiveCardColor = Color(0xFF111328);
-const bottomContainerColor = Color(0xFFEB1555);
-// const bottomContainerColor = Color(0XFFF2E9CD);
-const darkBackgroundColor = Color(0XFF0A0D22);
+import './constants.dart';
 
 enum Gender { female, male }
 
@@ -22,6 +17,7 @@ class BMICalculator extends StatefulWidget {
 class _BMICalculatorState extends State<BMICalculator> {
   Color maleCardColor = inactiveCardColor;
   Color femaleCardcolor = inactiveCardColor;
+  int height = 180;
 
   void updateColor(Gender selectedGender) {
     selectedGender == Gender.male
@@ -47,34 +43,30 @@ class _BMICalculatorState extends State<BMICalculator> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableCard(
+                    onPress: () {
                       setState(() {
                         updateColor(Gender.male);
                       });
                     },
-                    child: ReusableCard(
-                      cardColor: maleCardColor,
-                      cardChild: IconContent(
-                        label: 'MALE',
-                        icon: FontAwesomeIcons.mars,
-                      ),
+                    cardColor: maleCardColor,
+                    cardChild: IconContent(
+                      label: 'MALE',
+                      icon: FontAwesomeIcons.mars,
                     ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableCard(
+                    onPress: () {
                       setState(() {
                         updateColor(Gender.female);
                       });
                     },
-                    child: ReusableCard(
-                      cardColor: femaleCardcolor,
-                      cardChild: IconContent(
-                        label: 'FEMALE',
-                        icon: FontAwesomeIcons.venus,
-                      ),
+                    cardColor: femaleCardcolor,
+                    cardChild: IconContent(
+                      label: 'FEMALE',
+                      icon: FontAwesomeIcons.venus,
                     ),
                   ),
                 ),
@@ -82,13 +74,34 @@ class _BMICalculatorState extends State<BMICalculator> {
             ),
           ),
           Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: ReusableCard(cardColor: activeCardColor),
-                ),
-              ],
-            ),
+            child: ReusableCard(
+              cardColor: activeCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                const Text('HEIGHT', style: labelTextStyle,),
+                Row(
+
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                  Text(height.toString(), style: numberTextStyle,),
+                  const Text('cm', style: labelTextStyle,),
+                ],),
+                Slider(
+                  value: height.toDouble(),
+                  activeColor: Color(0xFFEB1555),
+                  inactiveColor: Color(0xFF8D8E98),
+                  min: 120.0,
+                  max: 220.0,
+                  label: '$height',
+                  onChanged: (double newValue) {
+                  setState(() {
+                    height = newValue.round();
+                  });
+                },)
+              ],),),
           ),
           Expanded(
             child: Row(
@@ -103,12 +116,7 @@ class _BMICalculatorState extends State<BMICalculator> {
             ),
           ),
           Container(
-            color: bottomContainerColor,
-            margin: EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: bottomContainerHeight,
-          ),
-          Row(
+            child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
@@ -124,7 +132,13 @@ class _BMICalculatorState extends State<BMICalculator> {
                         fontWeight: FontWeight.bold),
                   ))
             ],
-          )
+          ),
+            color: bottomContainerColor,
+            margin: EdgeInsets.only(top: 10),
+            width: double.infinity,
+            height: bottomContainerHeight,
+          ),
+          
         ],
       ),
     );
