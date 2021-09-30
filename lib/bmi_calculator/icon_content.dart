@@ -14,7 +14,7 @@ class IconContent extends StatelessWidget {
       children: [
         Icon(
           icon,
-          color: customCardInactiveText,
+          color: Colors.white,
           size: 80,
         ),
         SizedBox(
