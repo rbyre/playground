@@ -30,7 +30,8 @@ class AppItem extends StatelessWidget {
           baseColor: Colors.black,
           highlightColor: Colors.yellow,
           period: Duration(milliseconds: 2000),
-          // loop: 4,
+          loop: 4,
+          
           child: Column(
             children: [
               Text(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:playground/bmi_calculator/icon_content.dart';
 import 'package:playground/bmi_calculator/reusable_card.dart';
+import 'package:playground/bmi_calculator/round_icon_button.dart';
 
 import './constants.dart';
 
@@ -19,6 +20,7 @@ class _BMICalculatorState extends State<BMICalculator> {
   Color femaleCardcolor = inactiveCardColor;
   int height = 180;
   int weight = 60;
+  int age = 30;
 
   void updateColor(Gender selectedGender) {
     selectedGender == Gender.male
@@ -144,13 +146,23 @@ class _BMICalculatorState extends State<BMICalculator> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             RoundIconButton(
-                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                              icon: FontAwesomeIcons.minus,
                             ),
                             SizedBox(
                               width: 10,
                             ),
                             RoundIconButton(
-                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                              icon: FontAwesomeIcons.plus,
                             ),
                           ],
                         ),
@@ -159,7 +171,43 @@ class _BMICalculatorState extends State<BMICalculator> {
                   ),
                 ),
                 Expanded(
-                  child: ReusableCard(cardColor: activeCardColor),
+                  child: ReusableCard(
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'AGE',
+                            style: labelTextStyle,
+                          ),
+                          
+                          Text(
+                            age.toString(),
+                            style: numberTextStyle,
+                          ),
+                          
+                          Row(
+                            mainAxisAlignment:MainAxisAlignment.center,
+                            children: [
+                              RoundIconButton(
+                                  icon: FontAwesomeIcons.minus,
+                                  onPressed: () {
+                                    setState(() {
+                                      age--;
+                                    });
+                                  }),
+                                  SizedBox(width: 10,),
+                              RoundIconButton(
+                                  icon: FontAwesomeIcons.plus,
+                                  onPressed: () {
+                                    setState(() {
+                                      age++;
+                                    });
+                                  })
+                            ],
+                          )
+                        ],
+                      ),
+                      cardColor: activeCardColor),
                 ),
               ],
             ),
@@ -190,25 +238,5 @@ class _BMICalculatorState extends State<BMICalculator> {
         ],
       ),
     );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({required this.icon});
-
-
-  final IconData icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-        elevation: 6.0,
-        constraints: BoxConstraints.tightFor(height: 56, width: 56),
-        shape: CircleBorder(),
-        fillColor: Color(0xFF4C4F5E),
-        child: Icon(icon, color: Colors.white),
-        onPressed: () {
-          
-        });
   }
 }
