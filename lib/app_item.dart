@@ -41,6 +41,7 @@ class AppItem extends StatelessWidget {
               Text(
                 description,
                 style: Theme.of(context).textTheme.bodyText1,
+                textAlign: TextAlign.center,
               ),
             ],
           ),

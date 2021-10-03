@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:playground/bmi_calculator/icon_content.dart';
+import 'package:playground/bmi_calculator/results_page.dart';
 import 'package:playground/bmi_calculator/reusable_card.dart';
 import 'package:playground/bmi_calculator/round_icon_button.dart';
+import 'calculator_brain.dart';
 
 import './constants.dart';
 
@@ -179,14 +181,12 @@ class _BMICalculatorState extends State<BMICalculator> {
                             'AGE',
                             style: labelTextStyle,
                           ),
-                          
                           Text(
                             age.toString(),
                             style: numberTextStyle,
                           ),
-                          
                           Row(
-                            mainAxisAlignment:MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               RoundIconButton(
                                   icon: FontAwesomeIcons.minus,
@@ -195,7 +195,9 @@ class _BMICalculatorState extends State<BMICalculator> {
                                       age--;
                                     });
                                   }),
-                                  SizedBox(width: 10,),
+                              SizedBox(
+                                width: 10,
+                              ),
                               RoundIconButton(
                                   icon: FontAwesomeIcons.plus,
                                   onPressed: () {
@@ -213,20 +215,35 @@ class _BMICalculatorState extends State<BMICalculator> {
             ),
           ),
           Container(
+            padding: EdgeInsets.only(bottom: 5),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                TextButton(
+                  child: Text(
+                    'CALCULATE',
+                    style: largebuttonTextStyle,
+                  ),
+                  onPressed: () {
+                    CalculatorBrain calc =
+                        CalculatorBrain(height: height, weight: weight);
+                    
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ResultsPage(
+                        bmiResult: calc.calculateBMI(), 
+                        resultText: calc.getResult(), 
+                        interpretation: calc.getInterpretation()),
+                    ));
+                  },
+                ),
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).popUntil((route) => route.isFirst);
                     },
                     child: const Text(
-                      'Tilbake',
-                      style: TextStyle(
-                          fontFamily: 'SourceSansPro',
-                          fontSize: 20,
-                          color: Colors.teal,
-                          fontWeight: FontWeight.bold),
+                      'TILBAKE',
+                      style: largebuttonTextStyle,
                     ))
               ],
             ),
