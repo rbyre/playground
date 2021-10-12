@@ -36,6 +36,13 @@ const List myApps = [
     route: 'bmi',
     description: 'På tide med en joggetur?',
     color: Colors.deepPurple,
+  ),
+  Kort(
+    id: '6',
+    title: 'Weather',
+    route: 'weather',
+    description: 'Sjekk været',
+    color: Colors.deepOrange,
   )
 ];
 

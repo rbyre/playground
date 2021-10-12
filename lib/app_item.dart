@@ -38,10 +38,12 @@ class AppItem extends StatelessWidget {
                 title,
                 style: Theme.of(context).textTheme.caption,
               ),
-              Text(
-                description,
-                style: Theme.of(context).textTheme.bodyText1,
-                textAlign: TextAlign.center,
+              Expanded(
+                child: Text(
+                  description,
+                  style: Theme.of(context).textTheme.bodyText1,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ],
           ),

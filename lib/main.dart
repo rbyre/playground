@@ -4,9 +4,12 @@ import 'package:playground/contact.dart';
 import 'package:playground/dice.dart';
 import 'package:playground/home.dart';
 import 'package:playground/quiz/quizzen.dart';
+import 'package:playground/weather/screens/loading_screen.dart';
 import 'package:playground/xylophone.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future main() async {
+  await dotenv.load(fileName: ".env");
   runApp(MyApp());
 }
 
@@ -18,8 +21,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'App Playground',
       theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSwatch(primarySwatch: Colors.pink).copyWith(secondary: Colors.amber),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.pink)
+            .copyWith(secondary: Colors.amber),
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
         fontFamily: 'SourceSansPro',
         textTheme: ThemeData.light().textTheme.copyWith(
@@ -41,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/terninger': (ctx) => Dice(),
         '/quiz': (ctx) => Quizzen(),
         '/bmi': (ctx) => BMICalculator(),
+        '/weather': (ctx) => LoadingScreen()
       },
     );
   }
