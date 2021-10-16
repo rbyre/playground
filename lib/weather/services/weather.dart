@@ -8,7 +8,7 @@ class WeatherModel {
   Future<dynamic> getCityWeather(typedCity) async {
     String city = typedCity;
     var typedCityUri = Uri.parse(
-        '$openWeatherMapURL?q=${city}&units=metric&appid=${dotenv.env['WEATHER_API']}');
+        '$openWeatherMapURL?q=$city&units=metric&appid=${dotenv.env['WEATHER_API']}');
 
     NetworkHelper networkHelper = NetworkHelper(typedCityUri);
 

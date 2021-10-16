@@ -43,7 +43,19 @@ const List myApps = [
     route: 'weather',
     description: 'Sjekk været',
     color: Colors.deepOrange,
-  )
+  ),
+  Kort(
+      id: '7',
+      title: 'Heart',
+      route: 'heart',
+      description: 'Trykk på hjertet',
+      color: Colors.red),
+  Kort(
+      id: '8',
+      title: 'Lottie',
+      route: 'lottie',
+      description: 'Lottie animasjon',
+      color: Colors.blueGrey),
 ];
 
 // SizedBox(

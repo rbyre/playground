@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:playground/animated_like/heart_screen.dart';
 import 'package:playground/bmi_calculator/bmi_calculator.dart';
 import 'package:playground/contact.dart';
 import 'package:playground/dice.dart';
 import 'package:playground/home.dart';
+import 'package:playground/lottie.dart';
 import 'package:playground/quiz/quizzen.dart';
 import 'package:playground/weather/screens/loading_screen.dart';
 import 'package:playground/xylophone.dart';
@@ -44,7 +46,9 @@ class MyApp extends StatelessWidget {
         '/terninger': (ctx) => Dice(),
         '/quiz': (ctx) => Quizzen(),
         '/bmi': (ctx) => BMICalculator(),
-        '/weather': (ctx) => LoadingScreen()
+        '/weather': (ctx) => LoadingScreen(),
+        '/heart': (ctx) => HeartScreen(),
+        '/lottie': (ctx) => LottieScreen(),
       },
     );
   }
