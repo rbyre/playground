@@ -6,6 +6,7 @@ import 'package:playground/dice.dart';
 import 'package:playground/home.dart';
 import 'package:playground/lottie.dart';
 import 'package:playground/quiz/quizzen.dart';
+import 'package:playground/todo/screens/tasks_screen.dart';
 import 'package:playground/weather/screens/loading_screen.dart';
 import 'package:playground/xylophone.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
         '/weather': (ctx) => LoadingScreen(),
         '/heart': (ctx) => HeartScreen(),
         '/lottie': (ctx) => LottieScreen(),
+        '/todo': (ctx) => TasksScreen(),
       },
     );
   }

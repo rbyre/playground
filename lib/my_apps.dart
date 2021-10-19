@@ -56,6 +56,12 @@ const List myApps = [
       route: 'lottie',
       description: 'Lottie animasjon',
       color: Colors.blueGrey),
+  Kort(
+      id: '9',
+      title: 'Todo',
+      route: 'todo',
+      description: 'Todo liste',
+      color: Colors.lime),
 ];
 
 // SizedBox(
