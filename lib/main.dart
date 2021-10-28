@@ -6,10 +6,12 @@ import 'package:playground/dice.dart';
 import 'package:playground/home.dart';
 import 'package:playground/lottie.dart';
 import 'package:playground/quiz/quizzen.dart';
+import 'package:playground/todo/models/task_data.dart';
 import 'package:playground/todo/screens/tasks_screen.dart';
 import 'package:playground/weather/screens/loading_screen.dart';
 import 'package:playground/xylophone.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
@@ -21,37 +23,40 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'App Playground',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.pink)
-            .copyWith(secondary: Colors.amber),
-        canvasColor: Color.fromRGBO(255, 254, 229, 1),
-        fontFamily: 'SourceSansPro',
-        textTheme: ThemeData.light().textTheme.copyWith(
-              bodyText1: TextStyle(
-                color: Color.fromRGBO(20, 51, 51, 1),
+    return ChangeNotifierProvider(
+      create: (context) => TaskData(),
+      child: MaterialApp(
+        title: 'App Playground',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.pink)
+              .copyWith(secondary: Colors.amber),
+          canvasColor: Color.fromRGBO(255, 254, 229, 1),
+          fontFamily: 'SourceSansPro',
+          textTheme: ThemeData.light().textTheme.copyWith(
+                bodyText1: TextStyle(
+                  color: Color.fromRGBO(20, 51, 51, 1),
+                ),
+                bodyText2: TextStyle(
+                  color: Color.fromRGBO(20, 51, 51, 1),
+                ),
+                caption: TextStyle(fontSize: 24, fontFamily: 'pacifico'),
               ),
-              bodyText2: TextStyle(
-                color: Color.fromRGBO(20, 51, 51, 1),
-              ),
-              caption: TextStyle(fontSize: 24, fontFamily: 'pacifico'),
-            ),
+        ),
+        // home: Home(),
+        initialRoute: '/',
+        routes: {
+          '/': (ctx) => Home(),
+          '/kontakt': (ctx) => Contact(),
+          '/xylofon': (ctx) => Xylophone(),
+          '/terninger': (ctx) => Dice(),
+          '/quiz': (ctx) => Quizzen(),
+          '/bmi': (ctx) => BMICalculator(),
+          '/weather': (ctx) => LoadingScreen(),
+          '/heart': (ctx) => HeartScreen(),
+          '/lottie': (ctx) => LottieScreen(),
+          '/todo': (ctx) => TasksScreen(),
+        },
       ),
-      // home: Home(),
-      initialRoute: '/',
-      routes: {
-        '/': (ctx) => Home(),
-        '/kontakt': (ctx) => Contact(),
-        '/xylofon': (ctx) => Xylophone(),
-        '/terninger': (ctx) => Dice(),
-        '/quiz': (ctx) => Quizzen(),
-        '/bmi': (ctx) => BMICalculator(),
-        '/weather': (ctx) => LoadingScreen(),
-        '/heart': (ctx) => HeartScreen(),
-        '/lottie': (ctx) => LottieScreen(),
-        '/todo': (ctx) => TasksScreen(),
-      },
     );
   }
 }

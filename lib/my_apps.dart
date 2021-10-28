@@ -61,7 +61,7 @@ const List myApps = [
       title: 'Todo',
       route: 'todo',
       description: 'Todo liste',
-      color: Colors.lime),
+      color: Colors.lightBlueAccent),
 ];
 
 // SizedBox(

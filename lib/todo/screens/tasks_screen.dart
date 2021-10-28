@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:playground/todo/components/tasks_list.dart';
+import 'package:playground/todo/models/task_data.dart';
+import 'package:playground/todo/screens/add_task_bottom_sheet.dart';
+import 'package:provider/provider.dart';
 
 class TasksScreen extends StatelessWidget {
-  const TasksScreen({Key? key}) : super(key: key);
+  Widget? buildBottomSheet;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             padding:
@@ -25,43 +30,45 @@ class TasksScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Todoey',
+                  'Dette må du få gjort 😁',
                   style: TextStyle(
                       fontSize: 50,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
                 Text(
-                  '12 Tasks',
+                  '${Provider.of<TaskData>(context).taskCount} Tasks',
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
               ],
             ),
           ),
-          Column(
-            children: [
-              Container(
-                child: Expanded(
-                  child: Container(
-                    height: 300,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20))),
-                    child: Text('bob'),
-                  ),
-                ),
-              ),
-              FloatingActionButton(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.lightBlueAccent,
-                onPressed: () {},
-                child: Icon(Icons.add),
-              ),
-            ],
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20))),
+              child: TasksList(),
+            ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.lightBlueAccent,
+        foregroundColor: Colors.white,
+        child: Icon(Icons.add),
+        onPressed: () {
+          showModalBottomSheet(
+              // isScrollControlled: true,
+              context: context,
+              builder: (context) => AddTaskBottomSheet());
+        },
       ),
     );
   }
