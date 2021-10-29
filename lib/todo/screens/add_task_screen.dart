@@ -47,12 +47,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               height: 20,
             ),
             TextButton(
+              style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.lightBlueAccent,
+                  textStyle: TextStyle(fontSize: 24)),
               child: Text(
                 'Add',
-                style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                    backgroundColor: Colors.lightBlueAccent),
               ),
               onPressed: () {
                 newTodoTitle;

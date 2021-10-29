@@ -4,8 +4,9 @@ import 'dart:collection';
 
 class TaskData extends ChangeNotifier {
   List<TodoItem> _todoItems = [
-    TodoItem(whatTodo: 'Buy new mac', isChecked: true),
-    TodoItem(whatTodo: 'Get more coffe'),
+    TodoItem(
+        whatTodo: 'Legg til noe med + og slett med longpress',
+        isChecked: false),
   ];
 
   UnmodifiableListView<TodoItem> get todos {
@@ -24,6 +25,11 @@ class TaskData extends ChangeNotifier {
 
   void updateTodo(TodoItem currentTodoItem) {
     currentTodoItem.updateCheckBox();
+    notifyListeners();
+  }
+
+  void deleteTodo(TodoItem currentTodoItem) {
+    _todoItems.remove(currentTodoItem);
     notifyListeners();
   }
 }
